@@ -17,7 +17,7 @@ echo "M2_HOME = ${M2_HOME}"
 stage ('Build') {
 steps {
 git "https://github.com/john-smart/game-of-life.git"
-sh 'clean package'
+sh 'mvn clean package'
 }
 post {
 success {
