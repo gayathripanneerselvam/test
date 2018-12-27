@@ -26,12 +26,5 @@ archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
 }
 }
 }
-  stage ('Deploy'){
-  steps {
-sshagent(['1f2d204a-0f50-4571-8eac-86c70ebc1d30']) {
-    sh "scp -o StrictHostKeyChecking=no target/*.jar admin@13.232.175.7:/opt/tomcat/webapps"
-}
-	}
-	}
 }
 }
