@@ -19,7 +19,7 @@ pipeline {
       
       stage ('Compile-Package') {
             steps {
-                git "https://github.com/javahometech/my-app"
+                git "https://github.com/gayathripanneerselvam/myapp.git"
               sh 'mvn clean package'
             }
           post {
