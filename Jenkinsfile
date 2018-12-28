@@ -19,7 +19,7 @@ pipeline {
       
       stage ('Compile-Package') {
             steps {
-                git "https://github.com/gabrielf/maven-samples.git"
+                git "https://github.com/mjeanroy/junit-servers.git"
               sh 'mvn clean package'
             }
           post {
