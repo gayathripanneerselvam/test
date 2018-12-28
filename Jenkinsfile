@@ -43,7 +43,7 @@ pipeline {
  //}
        stage('Deploy to Tomcat'){
   steps {
-  sshagent(['3d0ff4fe-87e0-468b-9c6f-fbd6f291a57b']) {
+  sshagent(['ad28f7b1-a139-4ab7-920d-4fcef112c241']) {
     sh "scp  /var/lib/jenkins/workspace/tomcat-from-slave-to-app/target/*war ubuntu@35.175.116.69:/opt/tomcat/apache-tomcat-8.5.37/webapps"
     
     }
