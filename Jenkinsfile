@@ -51,7 +51,7 @@ pipeline {
     }
   stage('Run JMeter Test') {
         steps {
-            {
+        
                 sh '/root/apache-jmeter-5.0/bin/jmeter.sh -n -t /root/apache-jmeter-5.0/bin/ForEachTest2.jmx -l $WORKSPACE/build-result.jtl'
             }
         }
