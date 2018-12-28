@@ -19,7 +19,7 @@ pipeline {
       
       stage ('Compile-Package') {
             steps {
-                git "https://github.com/mjeanroy/junit-servers.git"
+                git "https://github.com/javahometech/my-app"
               sh 'mvn clean package'
             }
           post {
@@ -49,7 +49,12 @@ pipeline {
     }
     }
     }
-  
+  stage('Run JMeter Test') {
+        steps {
+            {
+                sh '/root/apache-jmeter-5.0/bin/jmeter.sh -n -t /root/apache-jmeter-5.0/bin/ForEachTest2.jmx -l $WORKSPACE/build-result.jtl'
+            }
+        }
   
        stage ('Email Notification'){
           steps{
