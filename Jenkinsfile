@@ -31,17 +31,18 @@ pipeline {
             }
       }
   
-      //stage('SonarQube analysis') {
-         //Ws(/var/lib/jenkins)
-    // requires SonarQube Scanner 2.4+
-        // steps {
-        // def scannerHome = tool 'SonarQube Scanner 2.4';
-     
-        //withSonarQubeEnv('My SonarQube Server') {
-     //sh "${scannerHome}/opt/sonar/sonar-scanner"
-    //}
- // }
- //}
+      //stage ('Sonar-Testing') {
+        
+//environment {
+// def scannerhome = tool 'sonar'
+ //   }
+ //steps {
+   //withSonarQubeEnv ('sonar') 
+//{
+//sh "${scannerhome}/bin/sonar -D sonar.projectKey=app -D sonar.projectName=app -D sonar.projectVersion=1.0  -D sonar.web.host=sonar -D sonar.web.port=9000 -D sonar.sources=/var/lib/jenkins/workspace/temp-pipeline/app package/src -D sonar.url=http://13.233.4.162:9000/sonar"
+  // }
+//}
+  //  } 
        stage('Deploy to Tomcat'){
   steps {
   sshagent(['e06a00da-1e5c-492a-b752-f6863ab77dcf']) {
