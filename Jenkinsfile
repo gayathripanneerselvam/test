@@ -46,7 +46,7 @@ sh "${scannerhome}/bin/sonar-runner -D sonar.projectKey=app -D sonar.projectName
     } 
        stage('Deploy to Tomcat'){
   steps {
-  sshagent(['9545974a-02f5-4ad2-b0c8-a9b4a3d340e7']) {
+  sshagent(['1f2d204a-0f50-4571-8eac-86c70ebc1d30']) {
     sh "scp -o StrictHostKeyChecking=no target/*.war admin@13.232.175.7:/opt/tomcat/webapps"
     
     }
