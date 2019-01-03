@@ -22,7 +22,7 @@ pipeline {
                 git "https://github.com/gayathripanneerselvam/myapp.git"
               //sh 'mvn clean package'
                sh 'mvn -f /var/lib/jenkins/workspace/temp-pipeline/app package'
-            }
+           // }
           //post {
             //    success {
              //       archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
@@ -70,4 +70,4 @@ sh "${scannerhome}/bin/sonar -D sonar.projectKey=app -D sonar.projectName=app -D
           }
        }
       }
-
+}
