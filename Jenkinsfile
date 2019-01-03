@@ -71,3 +71,4 @@ sh "${scannerhome}/bin/sonar -D sonar.projectKey=app -D sonar.projectName=app -D
        }
       }
    }
+}
