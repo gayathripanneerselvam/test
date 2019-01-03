@@ -20,29 +20,30 @@ pipeline {
       stage ('Compile-Package') {
             steps {
                 git "https://github.com/gayathripanneerselvam/myapp.git"
-              sh 'mvn clean package'
+              //sh 'mvn clean package'
+               sh 'mvn -f /var/lib/jenkins/workspace/temp-pipeline/app package'
             }
-          post {
-                success {
-                    archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
-                    junit '**/target/surefire-reports/*.xml' 
-                   s3Upload consoleLogLevel: 'INFO', dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'gayathri-jenkins-poc', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'ap-south-1', showDirectlyInBrowser: false, sourceFile: '**/target/*.war', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'gayathri-jenkins-poc', userMetadata: []
-                }
+          //post {
+            //    success {
+             //       archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
+               //     junit '**/target/surefire-reports/*.xml' 
+                 //  s3Upload consoleLogLevel: 'INFO', dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'gayathri-jenkins-poc', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'ap-south-1', showDirectlyInBrowser: false, sourceFile: '**/target/*.war', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'gayathri-jenkins-poc', userMetadata: []
+                //}
             }
       }
   
-      //stage ('Sonar-Testing') {
+      stage ('Sonar-Testing') {
         
-//environment {
-// def scannerhome = tool 'sonar'
- //   }
- //steps {
-   //withSonarQubeEnv ('sonar') 
-//{
-//sh "${scannerhome}/bin/sonar -D sonar.projectKey=app -D sonar.projectName=app -D sonar.projectVersion=1.0  -D sonar.web.host=sonar -D sonar.web.port=9000 -D sonar.sources=/var/lib/jenkins/workspace/temp-pipeline/app package/src -D sonar.url=http://13.233.4.162:9000/sonar"
-  // }
-//}
-  //  } 
+environment {
+def scannerhome = tool 'sonar'
+    }
+ steps {
+   withSonarQubeEnv ('sonar') 
+{
+sh "${scannerhome}/bin/sonar -D sonar.projectKey=app -D sonar.projectName=app -D sonar.projectVersion=1.0  -D sonar.web.host=sonar -D sonar.web.port=9000 -D sonar.sources=/var/lib/jenkins/workspace/temp-pipeline/app/src -D sonar.url=http://13.233.4.162:9000/sonar"
+   }
+}
+    } 
        stage('Deploy to Tomcat'){
   steps {
   sshagent(['9545974a-02f5-4ad2-b0c8-a9b4a3d340e7']) {
