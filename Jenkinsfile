@@ -40,7 +40,7 @@ def scannerhome = tool 'sonar'
  steps {
    withSonarQubeEnv ('sonar') 
 {
-sh "${scannerhome}/bin/sonar-runner -D sonar.projectKey=app -D sonar.projectName=app -D sonar.projectVersion=1.0  -D sonar.web.host=sonar -D sonar.web.port=9000 -D sonar.sources=/var/lib/jenkins/workspace/pipeline-jenkins-test/src -D sonar.java.binaries=/var/lib/jenkins/workspace/pipeline-jenkins-test/my-app-master/target/classes -D sonar.url=http://13.233.4.162:9000/sonar"
+sh "${scannerhome}/bin/sonar-runner -D sonar.projectKey=app -D sonar.projectName=app -D sonar.projectVersion=1.0  -D sonar.web.host=sonar -D sonar.web.port=9000 -D sonar.sources=/var/lib/jenkins/workspace/pipeline-jenkins-test/src -D sonar.java.binaries=/var/lib/jenkins/workspace/pipeline-jenkins-test/target/classes -D sonar.url=http://13.233.4.162:9000/sonar"
    }
 }
     } 
