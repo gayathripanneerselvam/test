@@ -57,6 +57,10 @@ sh "${scannerhome}/bin/sonar-runner -D sonar.projectKey=app -D sonar.projectName
         
                 sh '/root/apache-jmeter-5.0/bin/jmeter.sh -n -t /root/apache-jmeter-5.0/bin/ForEachTest2.jmx -l $WORKSPACE/build-result.jtl'
             }
+      post {
+       success {
+         perfReport 'build-result.jtl'
+       }}
         }
   
        stage ('Email Notification'){
