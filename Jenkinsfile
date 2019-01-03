@@ -21,7 +21,7 @@ pipeline {
             steps {
                 git "https://github.com/gayathripanneerselvam/myapp.git"
               //sh 'mvn clean package'
-               sh 'mvn -f /var/lib/jenkins/workspace/temp-pipeline/app package'
+               sh 'mvn clean package'
            // }
           //post {
             //    success {
