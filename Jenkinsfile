@@ -22,13 +22,13 @@ pipeline {
                 git "https://github.com/gayathripanneerselvam/myapp.git"
               //sh 'mvn clean package'
                sh 'mvn clean package'
-           // }
-          //post {
-            //    success {
-             //       archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
-               //     junit '**/target/surefire-reports/*.xml' 
-                 //  s3Upload consoleLogLevel: 'INFO', dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'gayathri-jenkins-poc', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'ap-south-1', showDirectlyInBrowser: false, sourceFile: '**/target/*.war', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'gayathri-jenkins-poc', userMetadata: []
-                //}
+           }
+          post {
+                success {
+                    archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
+                    junit '**/target/surefire-reports/*.xml' 
+                   s3Upload consoleLogLevel: 'INFO', dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'gayathri-jenkins-poc', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'ap-south-1', showDirectlyInBrowser: false, sourceFile: '**/target/*.war', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'gayathri-jenkins-poc', userMetadata: []
+                }
             }
       }
   
